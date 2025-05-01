@@ -1,4 +1,24 @@
 // === Inscription ===
+const fs = require('fs'); // module pour lire et écrire des fichiers
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Middleware pour pouvoir gérer les requêtes POST (ajout de nouveaux jeux)
+app.use(express.json());
+
+// Fonction pour lire le fichier JSON
+function readGamesFile() {
+  const data = fs.readFileSync('games.json', 'utf8');
+  return JSON.parse(data); // Convertir le contenu JSON en objet JavaScript
+}
+
+// Fonction pour écrire dans le fichier JSON
+function writeGamesFile(games) {
+  const data = JSON.stringify({ games: games }, null, 2);
+  fs.writeFileSync('games.json', data, 'utf8');
+}
+
 document.getElementById('validerBtn').addEventListener('click', function () {
   const pseudo = document.getElementById('pseudo').value;
   const nomRP = document.getElementById('nomRP').value;

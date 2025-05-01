@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tirage au Sort</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {font-family: Arial, sans-serif;
+        background-color: #f0f8ff; /* Fond bleu clair */
+        margin: 0;
+        padding: 0;
+      }
+
+      .game-container {
+        width: 80%;
+        margin: 20px auto;
+        text-align: center;
+      }
+
+      .player-list {
+        margin: 20px;
+        font-size: 18px;
+      }
+
+      #drawLine {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        margin: 20px 0;
+      }
+
+      #movingLine {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 20px;
+        animation: move 5s infinite linear;
+      }
+
+      @keyframes move {
+        0% { left: 0; }
+        100% { left: 100%; }
+      }
+
+      .draft-board {
+        margin-top: 20px;
+      }
+
+      #draftGrid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 10px;
+        margin-top: 20px;
+      }
+
+      .draft-grid-item {
+        width: 100px;
+        height: 100px;
+        background-color: white;
+        border: 2px solid #ddd;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+      }
+
+      .draft-grid-item:hover {
+        cursor: pointer;
+        background-color: #e0f7fa;
+      }
+
+      .draft-grid-item .info {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-size: 12px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 2px;
+      }
+
+      .draft-grid-item:hover .info {
+        display: block;
+      }
+
+      .choose-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .choose-btn:disabled {
+        background-color: #ccc;
+      }
+
+      #message {
+        margin-top: 20px;
+      }
+    </head>
+<body>
+  <div class="game-container">
+    <h1>Le Tirage au Sort</h1>
+    <div class="player-list">
+      <!-- Pseudos des joueurs affichés ici -->
+      <span id="player1"></span> | 
+      <span id="player2"></span> | 
+      <span id="player3"></span> | 
+      <span id="player4"></span> | 
+      <span id="player5"></span>
+    </div>
+
+    <div class="draw-container">
+      <h2>Tirage au sort</h2>
+      <div id="drawLine">
+        <!-- Affiche les pseudos avec un trait vertical qui se déplace -->
+        <span id="movingLine">Cliquez sur Stop pour arrêter le tirage</span>
+      </div>
+      <button id="stopDrawBtn">Stop</button>
+    </div>
+
+    <div class="draft-board">
+      <h3>La Draft</h3>
+      <div id="draftGrid">
+        <!-- 20 cases pour les choix -->
+        <!-- Chaque case sera remplie avec du texte dynamique plus tard -->
+      </div>
+    </div>
+
+    <button id="chooseBtn" class="choose-btn">Choisir</button>
+
+    <div id="message"></div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
